@@ -9,4 +9,4 @@ edition = "2021"
 # This dependency provides a version of the unstable nightly Rust `Allocator`
 # trait on stable Rust. Enabling this feature means that `alloc` will
 # implement its `Allocator` trait.
-allocator-api2 = { version = "0.2.8", default-features = false, optional = true }
+allocator-api2 = { version = "0.2.8", default-features = false, features = ["alloc"]}

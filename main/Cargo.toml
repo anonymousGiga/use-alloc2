@@ -7,5 +7,5 @@ edition = "2021"
 
 [dependencies]
 hashbrown = "0.14.1"
-alloc = { path = "../alloc", features = ["allocator-api2"] }
+alloc = { path = "../alloc" }
 rand = "0.8.5"

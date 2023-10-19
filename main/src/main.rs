@@ -1,6 +1,4 @@
-// #![feature(allocator_api)]
 use alloc::{Stats, TrackingAllocator, Vec};
-// use alloc2::{Stats as Stats2, TrackingAllocator as TrackingAllocator2};
 use hashbrown::HashMap;
 
 use rand::{thread_rng, Fill, Rng};

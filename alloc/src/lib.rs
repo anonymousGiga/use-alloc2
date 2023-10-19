@@ -1,20 +1,17 @@
-#[cfg(feature = "allocator-api2")]
 use allocator_api2::alloc::{AllocError, Allocator};
-#[cfg(feature = "allocator-api2")]
-use std::alloc::{GlobalAlloc, System};
-#[cfg(feature = "allocator-api2")]
-use std::ptr::NonNull;
-#[cfg(feature = "allocator-api2")]
-use std::slice;
-use std::alloc::Layout;
-use std::sync::atomic::{AtomicUsize, Ordering::SeqCst};
+use std::{
+    alloc::{GlobalAlloc, Layout, System},
+    ptr::NonNull,
+    slice,
+    sync::atomic::{AtomicUsize, Ordering::SeqCst},
+};
 
-#[cfg(feature = "allocator-api2")]
 pub use allocator_api2::vec::Vec;
 
 static ALLOC: AtomicUsize = AtomicUsize::new(0);
 static DEALLOC: AtomicUsize = AtomicUsize::new(0);
 
+#[derive(Debug, Clone, Default)]
 pub struct TrackingAllocator;
 
 pub fn reset() {
@@ -42,7 +39,6 @@ pub fn stats() -> Stats {
     }
 }
 
-#[cfg(feature = "allocator-api2")]
 unsafe impl Allocator for TrackingAllocator {
     fn allocate(&self, layout: Layout) -> Result<NonNull<[u8]>, AllocError> {
         unsafe {
